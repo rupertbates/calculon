@@ -75,7 +75,8 @@ public class ListViewAssertion extends ViewAssertion {
             public void run() {
                 View itemView = getAdapter().getView(position, null, listView);
                 assertNotNull("item view at position " + position + " was null", itemView);
-                listView.performItemClick(itemView, position, itemView.getId());
+                itemView.performClick();
+                //listView.performItemClick(itemView, position, itemView.getId());
             }
         }, true);
     }
