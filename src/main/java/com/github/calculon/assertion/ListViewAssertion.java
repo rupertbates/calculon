@@ -11,6 +11,7 @@ import java.util.List;
 import android.app.Activity;
 import android.test.InstrumentationTestCase;
 import android.view.View;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -38,10 +39,41 @@ public class ListViewAssertion extends ViewAssertion {
     public void hasItems() {
         assertFalse("list view expected not to be empty, but it was", getAdapter().isEmpty());
     }
+    private int getCount(){
+        ListAdapter adapter = getAdapter();
+        if(adapter.getClass() != HeaderViewListAdapter.class)
+            return adapter.getCount();
 
+        HeaderViewListAdapter headerViewListAdapter = (HeaderViewListAdapter) adapter;
+        return headerViewListAdapter.getCount() - (headerViewListAdapter.getFootersCount() + headerViewListAdapter.getHeadersCount());
+    }
+    public void hasFooter(){
+        ListAdapter adapter = getAdapter();
+        assertTrue("list was expected to have a footer, but does not", adapter.getClass() == HeaderViewListAdapter.class &&
+                ((HeaderViewListAdapter)adapter).getFootersCount() > 0);
+
+
+    }
+    public void hasHeader(){
+        ListAdapter adapter = getAdapter();
+        assertTrue("list was expected to have a header, but does not", adapter.getClass() == HeaderViewListAdapter.class &&
+                ((HeaderViewListAdapter)adapter).getHeadersCount() > 0);
+
+
+    }
     public void hasItems(int count) {
-        int actual = getAdapter().getCount();
+        int actual = getCount();
         assertEquals("list item count mismatch:", count, actual);
+    }
+
+    public void hasMoreItemsThan(int count) {
+        int actual = getCount();
+        assertTrue("list item count was expected to be greater than " + count + " but it was " + actual, count < actual);
+    }
+
+    public void hasFewerItemsThan(int count) {
+        int actual = getCount();
+        assertTrue("list item count was expected to be less than " + count + " but it was " + actual , count > actual);
     }
 
     public void hasNoItems() {
@@ -57,12 +89,12 @@ public class ListViewAssertion extends ViewAssertion {
     }
 
     public ViewAssertion lastItem() {
-        return item(getAdapter().getCount() - 1);
+        return item(getCount() - 1);
     }
 
     public MultiViewAssertion items() {
         ListAdapter adapter = getAdapter();
-        int count = adapter.getCount();
+        int count = getCount();
         List<View> views = new ArrayList<View>(count);
         for (int i = 0; i < count; i++) {
             views.add(adapter.getView(i, null, listView));
