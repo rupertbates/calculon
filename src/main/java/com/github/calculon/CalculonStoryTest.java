@@ -30,16 +30,17 @@ public abstract class CalculonStoryTest<ActivityT extends Activity> extends
     protected void setUp() throws Exception {
         Intent startingIntent = new Intent(getInstrumentation().getTargetContext(), mActivityClass
                 .getClass());
-        startingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         setUp(startingIntent);
     }
 
     protected void setUp(Intent startingIntent) throws Exception {
+        startingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         setActivityIntent(startingIntent);
 
-        super.setUp();
+        //super.setUp();
 
         activityStack = new StoryTestActivityStack(getActivity());
         setActivityInitialTouchMode(false);
