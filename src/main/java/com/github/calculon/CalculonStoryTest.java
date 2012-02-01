@@ -9,7 +9,7 @@ import com.github.calculon.story.StoryTestActivityStack;
 import com.github.calculon.support.ActivityLauncher;
 
 public abstract class CalculonStoryTest<ActivityT extends Activity> extends
-        ActivityInstrumentationTestCase2<ActivityT> implements CalculonTestCase{
+        ActivityInstrumentationTestCase2<ActivityT> implements CalculonTestCase, CalculonStory{
 
     private Class<ActivityT> mActivityClass = null;
     private StoryTestActivityStack activityStack = null;

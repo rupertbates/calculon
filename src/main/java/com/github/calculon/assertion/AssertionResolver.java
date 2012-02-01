@@ -3,6 +3,8 @@ package com.github.calculon.assertion;
 import android.app.Activity;
 import android.test.InstrumentationTestCase;
 
+import com.github.calculon.CalculonSingleLaunchStoryTest;
+import com.github.calculon.CalculonStory;
 import com.github.calculon.CalculonStoryTest;
 import com.github.calculon.CalculonUnitTest;
 import com.github.calculon.assertion.story.StoryTestActionAssertion;
@@ -16,12 +18,12 @@ public class AssertionResolver {
         if (testCase instanceof CalculonUnitTest<?>) {
             return new UnitTestActionAssertion<AssertionT>(fromAssertion, testCase, activity,
                     action, runOnMainThread);
-        } else if (testCase instanceof CalculonStoryTest<?>) {
+        } else if (testCase instanceof CalculonStory) {
             return new StoryTestActionAssertion<AssertionT>(fromAssertion, testCase, activity,
                     action, runOnMainThread);
         } else {
             throw new IllegalArgumentException("Test case must be either a "
-                    + CalculonUnitTest.class.getName() + " or " + CalculonStoryTest.class.getName());
+                    + CalculonUnitTest.class.getName() + " or " + CalculonStory.class.getName());
         }
     }
 }

@@ -3,8 +3,7 @@ package com.github.calculon.assertion;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.test.InstrumentationTestCase;
-
-import com.github.calculon.CalculonStoryTest;
+import com.github.calculon.CalculonStory;
 import com.github.calculon.CalculonUnitTest;
 
 public abstract class AssertionBase {
@@ -25,7 +24,7 @@ public abstract class AssertionBase {
     }
 
     @SuppressWarnings("unchecked")
-    public CalculonStoryTest<Activity> getStoryTestCase() {
-        return (CalculonStoryTest<Activity>) testCase;
+    public CalculonStory<Activity> getStoryTestCase() {
+        return (CalculonStory<Activity>) testCase;
     }
 }
