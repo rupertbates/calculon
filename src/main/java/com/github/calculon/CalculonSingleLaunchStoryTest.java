@@ -40,19 +40,19 @@ public abstract class CalculonSingleLaunchStoryTest<ActivityT extends Activity>
 //        setUp(startingIntent);
     }
 
-    protected void setUp(Intent startingIntent) throws Exception {
-        startingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        //setActivityIntent(startingIntent);
-
-        //super.setUp();
-
-        activityStack = new StoryTestActivityStack(getActivity());
-        //setActivityInitialTouchMode(false);
-
-        CalculonAssertions.register(this);
-    }
+//    protected void setUp(Intent startingIntent) throws Exception {
+//        startingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//        //setActivityIntent(startingIntent);
+//
+//        //super.setUp();
+//
+//        activityStack = new StoryTestActivityStack(getActivity());
+//        //setActivityInitialTouchMode(false);
+//
+//        CalculonAssertions.register(this);
+//    }
 
     @Override
     public void setCurrentActivity(Activity currentActivity) {

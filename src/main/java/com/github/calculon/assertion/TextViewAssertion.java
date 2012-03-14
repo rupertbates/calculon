@@ -6,8 +6,9 @@ import android.app.Activity;
 import android.test.InstrumentationTestCase;
 import android.test.MoreAsserts;
 import android.widget.TextView;
+import com.github.calculon.predicate.Predicate;
 
-public class TextViewAssertion extends ViewAssertion {
+public class TextViewAssertion extends ViewAssertion<TextView> {
 
     private TextView textView;
 
@@ -39,6 +40,10 @@ public class TextViewAssertion extends ViewAssertion {
 
     public void matches(String regex) {
         MoreAsserts.assertMatchesRegex(regex, textView.getText().toString());
+    }
+    
+    public void satisfies(Predicate<TextView> predicate){
+        super.satisfies(predicate);
     }
 
 }

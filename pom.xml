@@ -3,7 +3,7 @@
   <name>Calculon</name>
   <groupId>com.github.calculon</groupId>
   <artifactId>calculon</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.3</version>
   <description>Calculon is a testing DSL for Google Android.</description>
   <url>http://github.com/kaeppler/calculon</url>
   

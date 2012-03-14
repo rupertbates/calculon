@@ -8,9 +8,9 @@ import android.test.InstrumentationTestCase;
 import android.view.View;
 import android.widget.AbsListView;
 
-public class ViewAssertion extends TargetedAssertion<View> {
+public class ViewAssertion<ViewType extends View> extends TargetedAssertion<ViewType> {
 
-    public ViewAssertion(InstrumentationTestCase testCase, Activity activity, View view) {
+    public ViewAssertion(InstrumentationTestCase testCase, Activity activity, ViewType view) {
         super(testCase, activity, view);
     }
 
