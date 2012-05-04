@@ -5,8 +5,6 @@ import android.test.InstrumentationTestCase;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +33,22 @@ public class ExpandableListViewAssertion extends ViewAssertion {
     }
 
     public void hasGroups() {
-        assertFalse("list view expected not to be empty, but it was", getAdapter().getGroupCount() > 0);
+        assertTrue("expandable list view expected to have groups but it did not", getAdapter().getGroupCount() > 0);
     }
 
     public void hasGroups(int count) {
         int actual = getAdapter().getGroupCount();
-        assertEquals("list group count mismatch:", count, actual);
+        assertEquals("expandable list group count mismatch:", count, actual);
+    }
+
+
+    public void hasChildren(int groupId, int count) {
+        int actual = getAdapter().getChildrenCount(groupId);
+        assertEquals("expandable list child count mismatch:", count, actual);
+    }
+
+    public void hasFooter(){
+        assertTrue("list was expected to have a footer, but does not", listView.getFooterViewsCount() > 0);
     }
 
     public void isEmpty() {

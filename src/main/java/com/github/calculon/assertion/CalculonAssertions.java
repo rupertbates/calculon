@@ -1,16 +1,14 @@
 package com.github.calculon.assertion;
 
-import static junit.framework.Assert.assertNotNull;
 import android.app.Activity;
 import android.content.Intent;
-import android.test.ActivityInstrumentationTestCase2;
-import android.test.ActivityTestCase;
 import android.test.InstrumentationTestCase;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-
 import com.github.calculon.CalculonTestCase;
+
+import static junit.framework.Assert.assertNotNull;
 
 public class CalculonAssertions {
 
@@ -46,6 +44,14 @@ public class CalculonAssertions {
 
     public static ListView list(int layoutId, int id) {
         return (ListView) view(layoutId).findViewById(id);
+    }
+
+    public static ExpandableListView expandableListView(int id){
+        return (ExpandableListView) getActivity().findViewById(id);
+    }
+
+    public static ExpandableListView expandableListView(int layoutId, int id){
+        return (ExpandableListView) view(layoutId).findViewById(id);
     }
 
     public static View emptyListView() {
